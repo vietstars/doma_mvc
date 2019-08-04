@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templates :: header"></head>
+<body>
+	<section th:insert="templates :: menu-top"></section>
+	<section th:include="${#httpServletRequest.requestURI.substring(1)} :: index"></section>
+</body>
+</html>
