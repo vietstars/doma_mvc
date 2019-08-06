@@ -1,4 +1,7 @@
-ext.dependentVersion = '2.24.0'
+
+ext.lombokVersion = '1.18.8'
+ext.domaVersion = '2.24.0'
+
 buildscript {
     repositories {
         mavenCentral()
@@ -28,7 +31,7 @@ compileJava {
 }
 
 bootJar {
-    baseName = 'mysql-hypernate'
+    baseName = 'doma-mysql'
     version =  '0.1.0'
 }
 
@@ -43,9 +46,12 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
+    compileOnly ("org.projectlombok:lombok:${lombokVersion}")
     runtime("mysql:mysql-connector-java:+")
-    runtime("org.springframework:spring-jdbc:+")
-    annotationProcessor("org.seasar.doma:doma:${dependentVersion}")
-    implementation("org.seasar.doma:doma:${dependentVersion}")
-    testCompile("junit:junit")
+    //runtime("org.springframework:spring-jdbc:+")
+    annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
+    annotationProcessor("org.seasar.doma:doma:${domaVersion}")
+    implementation("org.seasar.doma:doma:${domaVersion}")
+
+    testCompile ("junit:junit:+")
 }
