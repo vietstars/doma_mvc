@@ -3,6 +3,11 @@
 <head th:insert="templates :: header"></head>
 <body>
 	<section th:insert="templates :: menu-top"></section>
-	<section th:include="${#httpServletRequest.requestURI.substring(1)} :: index"></section>
+	<div th:if="${view != null}">
+		<section th:include="${view} :: index"></section>
+	</div>
+	<div th:if="${view == null}">
+		<section th:include="${#httpServletRequest.requestURI.substring(1)} :: index"></section>
+	</div>
 </body>
 </html>

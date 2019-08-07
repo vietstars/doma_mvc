@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>  
+    <section class="container" th:fragment="index">      	
+      	<div class="row">
+			<div class="col-6 offset-sm-3 mt-5">
+				<h1>Delete Account</h1>
+				<form action="#" th:object="${userForm}" method="post">
+				  	<div class="form-group">
+				    	<label for="inputEmail">Confirm email address</label>
+				    	<input type="email" class="form-control" id="inputEmail" th:field="*{email}" th:placeholder="${account.email}" />
+				    	<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">We'll never share your email with anyone else.</small>
+				  	</div>				  	
+				  	<button type="submit" class="btn btn-primary float-right">Delete</button>
+				</form>
+			</div>
+		</div>
+    </section>  
+</body>  
+</html>

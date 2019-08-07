@@ -10,13 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import pwater.service.AccountService;
 import pwater.form.RegisterForm;
 import pwater.model.Account;
 
 
 @Controller
 public class Register {
+
+    @Autowired
+    private AccountService accountService;
 		
     @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
     public String showRegister(
@@ -41,7 +46,7 @@ public class Register {
         	newAccount.setEmail(email);
         	newAccount.setPassword(password);
         	newAccount.setGender(gender);
-            System.out.println(newAccount.newAccount(newAccount));
+            System.out.println(accountService.newAccount(newAccount));
             //model.addAttribute("loginError","Your account's information is not found!");
         	return "redirect:/home";
         }

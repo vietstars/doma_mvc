@@ -1,7 +1,1 @@
-select
-	account.id as id, 
-	account.email as email, 
-	account.password as password, 
-	account.gender as gender
-from
-	account
+SELECT account.id as id, account.email as email, account.password as password, account.gender as gender FROM account

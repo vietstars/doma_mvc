@@ -15,11 +15,11 @@ import pwater.model.Account;
 public class AccountService {
 
 	private final AccountDao accountDao = new AccountDaoImpl();
-
+	
     private TransactionManager tm = DomaConfig.singleton().getTransactionManager();
 
 	public List<Account> selectAll() {
-		List accounts = tm.required(() -> {			
+		List<Account> accounts = tm.required(() -> {			
 			List<Account> list = accountDao.selectAll();
 			return list;
 		});
@@ -39,6 +39,20 @@ public class AccountService {
 		 	return accountDao.newAccount(account);
 		});
 		return result;
+	}
+
+	public Account findOne(Integer id) {
+		Account account = tm.required(() -> {			
+		 	return accountDao.findOne(id);
+		});
+		return account;
+	}
+
+	public Integer delAccount(Integer id) {
+		Integer account = tm.required(() -> {			
+		 	return accountDao.delAccount(id);
+		});
+		return account;
 	}
 
 }

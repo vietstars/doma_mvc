@@ -64,20 +64,25 @@ public class Account {
 	// 	this.gender = gender;
 	// }
 
-	public List selectAll() {
-		AccountService accountService = new AccountService();
-		List<Account> accounts = accountService.selectAll();
-		return accounts;
-	}
+	// public List selectAll() {
+	// 	AccountService accountService = new AccountService();
+	// 	List<Account> accounts = accountService.selectAll();
+	// 	return accounts;
+	// }
 
-	public Account findByEmail(String email) {
-		AccountService accountService = new AccountService();
-		Account account = accountService.findByEmail(email);
-		return account;
-	}
+	// public Account findByEmail(String email) {
+	// 	AccountService accountService = new AccountService();
+	// 	Account account = accountService.findByEmail(email);
+	// 	return account;
+	// }
 
-	public Integer newAccount(Account account) {
-		AccountService accountService = new AccountService();
-		return accountService.newAccount(account);
-	}
+	// public Integer newAccount(Account account) {
+	// 	AccountService accountService = new AccountService();
+	// 	return accountService.newAccount(account);
+	// }
+
+	// public Integer delAccount(Integer id) {
+	// 	AccountService accountService = new AccountService();
+	// 	return accountService.newAccount(id);
+	// }
 }

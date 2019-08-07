@@ -24,8 +24,8 @@ public class DomaConfig implements Config {
 		dialect = new MysqlDialect();
 		dataSource = new LocalTransactionDataSource(
             "jdbc:mysql://localhost:3306/hypernate",
-            "ben_dev",
-            "ben_pass"
+            "root",
+            "admin"
         );
 		transactionManager = new LocalTransactionManager(dataSource.getLocalTransaction(getJdbcLogger()));
 	}
