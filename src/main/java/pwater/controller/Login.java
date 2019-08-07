@@ -18,6 +18,8 @@ import pwater.model.Account;
 @Controller
 public class Login {
 	
+    private Account accountModel = new Account();
+
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(
     		LoginForm loginForm
@@ -39,7 +41,6 @@ public class Login {
     	if (bindingResult.hasErrors()) {
             return "_layout";
         }else {
-            Account accountModel = new Account();
             Account acc	= accountModel.findByEmail(email);
             if(password.equals(acc.getPassword())) {
                 HttpSession session = req.getSession();

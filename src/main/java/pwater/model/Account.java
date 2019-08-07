@@ -1,13 +1,17 @@
 package pwater.model;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.seasar.doma.Entity;
 import org.seasar.doma.Table;
 import org.seasar.doma.Column;
+import org.seasar.doma.GeneratedValue;
+import org.seasar.doma.GenerationType;
+import org.seasar.doma.Id;
 
 import lombok.Data;
- 
-
 import pwater.service.AccountService;
 
 @Data //support getter setter
@@ -15,8 +19,9 @@ import pwater.service.AccountService;
 @Table(name="account")
 public class Account {
 
-	@Column(name = "id")
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@Column(name = "email")
 	private String email;
@@ -27,11 +32,11 @@ public class Account {
 	@Column(name = "gender")
 	private String gender;
 
-	// public Long getId() {
+	// public Integer getId() {
 	// 	return id;
 	// }
 
-	// public void setId(Long id) {
+	// public void setId(Integer id) {
 	// 	this.id = id;
 	// }
 
@@ -65,9 +70,14 @@ public class Account {
 		return accounts;
 	}
 
-	 public Account findByEmail(String email) {
-	 	AccountService accountService = new AccountService();
-	 	Account account = accountService.findByEmail(email);
-	 	return account;
-	 }
+	public Account findByEmail(String email) {
+		AccountService accountService = new AccountService();
+		Account account = accountService.findByEmail(email);
+		return account;
+	}
+
+	public Integer newAccount(Account account) {
+		AccountService accountService = new AccountService();
+		return accountService.newAccount(account);
+	}
 }

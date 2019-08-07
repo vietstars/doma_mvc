@@ -19,22 +19,26 @@ public class AccountService {
     private TransactionManager tm = DomaConfig.singleton().getTransactionManager();
 
 	public List<Account> selectAll() {
-
 		List accounts = tm.required(() -> {			
 			List<Account> list = accountDao.selectAll();
 			return list;
 		});
-		
 		return accounts;
 	}
 
 	public Account findByEmail(String email) {
-
 		Account account = tm.required(() -> {			
 		 	Account findout = accountDao.findByEmail(email);
 		 	return findout;
 		});
 		return account;
+	}
+
+	public Integer newAccount(Account account) {
+		Integer result = tm.required(() -> {			
+		 	return accountDao.newAccount(account);
+		});
+		return result;
 	}
 
 }

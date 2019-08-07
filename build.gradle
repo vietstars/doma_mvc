@@ -43,15 +43,14 @@ repositories {
 }
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-devtools")
     compileOnly ("org.projectlombok:lombok:${lombokVersion}")
     runtime("mysql:mysql-connector-java:+")
-    //runtime("org.springframework:spring-jdbc:+")
-    annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
-    annotationProcessor("org.seasar.doma:doma:${domaVersion}")
     implementation("org.seasar.doma:doma:${domaVersion}")
+    annotationProcessor("org.seasar.doma:doma:${domaVersion}")
+    annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
 
     testCompile ("junit:junit:+")
 }
