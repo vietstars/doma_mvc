@@ -1,1 +1,1 @@
-SELECT account.id as id, account.email as email, account.password as password, account.gender as gender FROM account
+SELECT account.id as id, account.email as email, account.gender as gender, account.status as status FROM account

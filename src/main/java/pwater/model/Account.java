@@ -32,6 +32,9 @@ public class Account {
 	@Column(name = "gender")
 	private String gender;
 
+	@Column(name = "status")
+	private Integer status;
+
 	// public Integer getId() {
 	// 	return id;
 	// }

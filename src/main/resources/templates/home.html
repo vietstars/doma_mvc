@@ -23,7 +23,7 @@
 				    </tr>
 				</thead>
 				<tbody>
-			  		<tr th:each="account : ${accounts}">
+			  		<tr th:each="account : ${accounts}" th:class="${account.status == 2}?'bg-danger text-white':(${account.status == 1}?'bg-warning text-white')">
 				        <td th:text="${account.id}">No.</td>
 				        <td th:text="${account.email}">Email</td>
 				        <td>
@@ -31,8 +31,8 @@
 				        	<span th:if="${account.gender == 'F'}"> Female</span>	
 						</td>
 						<td class="text-right">
-							<a href="comments.html" th:href="@{/user/ban(id=${account.id})}">ban</a>
-							<a href="comments.html" th:href="@{/user/del/}+${account.id}">delete</a>
+							<a href="comments.html" th:href="@{/user/ban(id=${account.id})}" th:text="${account.status == 1}?'Unlock':'Lock'" th:remove="${account.status == 2}?all:none">Ban account</a>
+							<a href="comments.html" th:href="@{/user/del/}+${account.id}" th:remove="${account.status == 2}?tag:none">Delete</a>
 						</td>
 			      	</tr>
 			    </tbody>

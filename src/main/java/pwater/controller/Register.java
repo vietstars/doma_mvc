@@ -46,9 +46,9 @@ public class Register {
         	newAccount.setEmail(email);
         	newAccount.setPassword(password);
         	newAccount.setGender(gender);
-            System.out.println(accountService.newAccount(newAccount));
-            //model.addAttribute("loginError","Your account's information is not found!");
-        	return "redirect:/home";
+            boolean created = accountService.newAccount(newAccount);
+            model.addAttribute("registerError","Your email is exists!");
+        	return created?"redirect:/home":"_layout";
         }
     }
 

@@ -18,7 +18,7 @@ public interface AccountDao {
 	@Select
 	List<Account> selectAll();
 
-	@Sql("SELECT account.email as email,account.gender as gender FROM account WHERE account.id = /* id */'0'")
+	@Sql("SELECT account.id as id,account.email as email,account.password as password,account.gender as gender,account.status as status FROM account WHERE account.id = /* id */'0'")
 	@Select
 	Account findOne(int id);
 
@@ -27,12 +27,15 @@ public interface AccountDao {
 	Account findByEmail(String email);
 
 	@Insert
-	@Sql("INSERT INTO account (id, email, password, gender) VALUES (/* account.id */0,/* account.email */'',/* account.password */100,/* account.gender */0)")
+	@Sql("INSERT INTO account (account.id,account.email,account.password,account.gender) VALUES (/* account.id */0,/* account.email */'',/* account.password */100,/* account.gender */0)")
 	int newAccount(Account account);
 
 	@Update
-	@Sql("UPDATE account SET status = '2' WHERE id = /* id */0")
+	@Sql("UPDATE account SET account.status = '2' WHERE account.id = /* id */0")
 	int delAccount(int id);
+
+	@Update()
+	int toggleBan(Account account);
 
 }
 
