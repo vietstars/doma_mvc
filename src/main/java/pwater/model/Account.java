@@ -2,8 +2,6 @@ package pwater.model;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.seasar.doma.Entity;
 import org.seasar.doma.Table;
 import org.seasar.doma.Column;
@@ -12,7 +10,7 @@ import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
 
 import lombok.Data;
-import pwater.service.AccountService;
+// import pwater.service.AccountService;
 
 @Data //support getter setter
 @Entity

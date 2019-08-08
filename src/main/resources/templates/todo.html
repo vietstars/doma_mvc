@@ -1,0 +1,26 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>  
+    <section class="container" th:fragment="index">      	
+      	<div class="row">
+			<div class="col-6 offset-sm-3 mt-5">
+				<h1 th:text="${ session.loggedId != null && session.loggedId != false}?'Hi '+${session.loggedEmail}+'!':'Hi there!'">Hi there!</h1>
+				<div class="alert alert-danger" role="alert" th:if="${not #strings.isEmpty(taskError)}">
+				  <span th:text="${taskError}">A simple primary alert—check error!</span>
+				</div>
+				<form action="#" th:object="${todoForm}" method="post">
+				  	<div class="form-group">
+				    	<label for="inputEmail">What your main focus today?</label>
+				    	<input type="text" class="form-control" id="inputEmail" th:field="*{task}" placeholder="Enter task" />
+				    	<small class="form-text text-danger" th:if="${#fields.hasErrors('task')}" th:errors="*{task}">
+					    	What your main focus today?.
+					    </small>
+				  	</div>				  	
+				  	<button type="submit" class="btn btn-primary float-right">Add</button>
+				</form>
+			</div>
+		</div>
+    </section>  
+</body>  
+</html>
